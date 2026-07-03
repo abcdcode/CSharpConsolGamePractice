@@ -20,6 +20,7 @@ public abstract class Scene
     }
     protected void DrawString(int x, int y, string text)
     {
+        if(x < 0 || y < 0) return;
         if(buffer.GetLength(0) <= y) return;
         for (int i = 0; i < text.Length; i++)
         {
@@ -27,6 +28,19 @@ public abstract class Scene
                 break;
 
             buffer[y, x + i] = text[i];
+        }
+    }
+    protected void DrawObject(MapObject obj)
+    {
+        int x = obj.Position.X;
+        int y = obj.Position.Y;
+        DrawSString(x,y,obj.RenderShape());
+    }
+    protected void DrawSString(int x, int y, string[] ttext)
+    {
+        for(int i = 0 ; i < ttext.Length; i++)
+        {
+            DrawString(x,y+i,ttext[i]);
         }
     }
     public int CurrentWidth => Console.WindowWidth;

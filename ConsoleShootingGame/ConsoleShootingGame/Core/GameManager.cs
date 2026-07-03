@@ -12,6 +12,8 @@ public class GameManager
     public void Start()
     {
         curScene = new TestScene();
+        State = new GameState();
+        State.player.Position = new Vector2(0,0);
         MainLoop();
     }
     public async void MainLoop()
@@ -44,6 +46,7 @@ public class GameManager
             await Task.Delay(FrameTime);
         }
     }
+    public GameState State{get;private set;}
     public const int FrameTime = 10;
     public int lastScreenX;
     public int lastScreenY;

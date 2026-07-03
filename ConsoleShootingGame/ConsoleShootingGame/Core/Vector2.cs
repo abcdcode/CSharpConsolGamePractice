@@ -2,6 +2,16 @@ using System.Diagnostics.CodeAnalysis;
 
 public struct Vector2
 {
+    public Vector2()
+    {
+        X = 0;
+        Y = 0;
+    }
+    public Vector2(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
     public static Vector2 operator +(Vector2 left, Vector2 right)
     {
         left.X += right.X;
