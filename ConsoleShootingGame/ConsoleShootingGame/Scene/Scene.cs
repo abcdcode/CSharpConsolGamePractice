@@ -1,6 +1,7 @@
 public abstract class Scene
 {
     public abstract char[,] Render();
+    public abstract void CheckInput();
     public void BufferClear()
     {
 

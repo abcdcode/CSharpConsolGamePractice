@@ -16,6 +16,7 @@ public class GameManager
     }
     public async void MainLoop()
     {
+        curScene.CheckInput();
         while(true)
         {
             //Console.SetWindowSize(curScene.CurrentWidth, curScene.CurrentHeight);
@@ -26,6 +27,7 @@ public class GameManager
             Console.SetCursorPosition(0, 0);
             lastScreenX = Console.WindowWidth;
             lastScreenY = Console.WindowHeight;
+            
             char[,] b = curScene.Render();
             StringBuilder sb = new StringBuilder();
             
@@ -39,10 +41,12 @@ public class GameManager
             }
             Console.WriteLine(sb.ToString());
             Console.SetCursorPosition(0, 0);
-            await Task.Delay(100);
+            await Task.Delay(FrameTime);
         }
     }
+    public const int FrameTime = 10;
     public int lastScreenX;
     public int lastScreenY;
     public Scene curScene;
+    public bool IsRunning = true;
 }
