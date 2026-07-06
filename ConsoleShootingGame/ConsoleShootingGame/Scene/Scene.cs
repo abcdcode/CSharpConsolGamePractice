@@ -1,4 +1,4 @@
-public abstract class Scene
+public abstract class Scene : IInputable
 {
     public abstract char[,] Render();
     public abstract void Update();
@@ -60,6 +60,11 @@ public abstract class Scene
             DrawString(x,y+i,ttext[i],mX,mY);
         }
     }
+
+    public virtual void CheckInput(List<KeyAction> keyInputs)
+    {
+    }
+
     public int CurrentWidth => Console.WindowWidth;
     public int CurrentHeight => Console.WindowHeight-4;
     public char[,] buffer;

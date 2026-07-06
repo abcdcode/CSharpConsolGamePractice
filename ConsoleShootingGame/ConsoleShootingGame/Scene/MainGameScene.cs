@@ -24,7 +24,6 @@ public class MainGameScene : Scene
     }
     public override void Update()
     {
-        GameManager.Instance.State.player.CheckInput();
     }
     public override void OnChangeScene(Scene prevScene)
     {

@@ -1,13 +1,16 @@
 public class TitleScene : Scene
 {
+    public override void CheckInput(List<KeyAction> keyInputs)
+    {
+        keyInputs.AddRange(
+        [
+            new([ConsoleKey.D1,ConsoleKey.NumPad1],StartGame),
+            new([ConsoleKey.D0,ConsoleKey.NumPad0],QuitGame)
+        ]);
+    }
     public override void Update()
     {
-        KeyAction[] actions =
-        {
-            new('1',StartGame),
-            new('0',QuitGame)
-        };
-        IInputable.DefaultInputCheck(actions);
+        
     }
 
     public override char[,] Render()

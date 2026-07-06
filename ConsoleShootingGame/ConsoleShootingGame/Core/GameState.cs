@@ -1,4 +1,4 @@
-public class GameState
+public class GameState : IInputable
 {
     public static GameState Instance{get;private set;}
     public GameState()
@@ -34,6 +34,10 @@ public class GameState
     {
         bulletPool.Remove(b);
     }
+    public void CheckInput(List<KeyAction> keyInputs)
+    {
+        player.CheckInput(keyInputs);
+    }
     public void Update()
     {
         if(!GameManager.Instance.IsPlaying) return;
@@ -47,6 +51,9 @@ public class GameState
     {
         return bulletPool.ToList();
     }
+
+    
+
     public Player player;
     private List<Bullet> bulletPool;
     public const int MapSizeX = 60;

@@ -1,9 +1,12 @@
 using System.Dynamic;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Text;
 
 public class GameManager
 {
+    [DllImport("user32.dll")]
+    static extern short GetAsyncKeyState(int vKey);
     public static GameManager Instance{get;private set;}
     public GameManager()
     {
@@ -26,15 +29,49 @@ public class GameManager
         scene.OnChangeScene(curScene);
         curScene = scene;
     }
-    public async void MainLoop()
+    public bool IsPressed(ConsoleKey key)
+    {
+        return (GetAsyncKeyState((int)key) & 0x8000) != 0;
+    }
+    private void InputProcessing(List<KeyAction> actions)
+    {
+        foreach(var ac in actions)
+        {
+            foreach(var k in ac.key)
+            {
+                if(IsPressed(k))
+                {
+                    ac.action();
+                    break;
+                }
+            }
+        }
+    }
+    private async void MainLoop()
     {
         
         while(true)
         {
+            //키 입력 액션 집합
+            List<KeyAction> actions = new List<KeyAction>();
+            GameState.Instance.CheckInput(actions);
+            curScene.CheckInput(actions);
+            InputProcessing(actions);
+
+            //업데이트
             State.Update();
             curScene.Update();
-            //Console.SetWindowSize(curScene.CurrentWidth, curScene.CurrentHeight);
-            if(lastScreenX != Console.WindowWidth || lastScreenY != Console.WindowHeight)
+
+            //화면 렌더링
+            DrawScreen();
+
+            //프레임 시간만큼 대기
+            await Task.Delay(FrameTime);
+        }
+    }
+    private void DrawScreen()
+    {
+        if(lastScreenX != Console.WindowWidth || lastScreenY != Console.WindowHeight)
             {
                 Console.Clear();
             }
@@ -55,8 +92,6 @@ public class GameManager
             }
             Console.WriteLine(sb.ToString());
             Console.SetCursorPosition(0, 0);
-            await Task.Delay(FrameTime);
-        }
     }
     public bool IsPlaying{get;set;}
     public GameState State{get;private set;}

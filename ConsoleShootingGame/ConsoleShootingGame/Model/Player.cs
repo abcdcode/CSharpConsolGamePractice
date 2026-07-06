@@ -1,5 +1,11 @@
 public class Player : MapObject, IInputable
 {
+    public Player()
+    {
+        coolTimer = new CoolTimer();
+        coolTimer.SetCool(shootCool,100,100,false,null);
+        coolTimer.SetCool(moveCool,50,50,false,null);
+    }
     public override string[] RenderShape()
     {
         return ["▷"];
@@ -7,6 +13,7 @@ public class Player : MapObject, IInputable
     public override void Update()
     {
         base.Update();
+        coolTimer.Update();
         CheckHit();
     }
     public void CheckHit()
@@ -26,24 +33,26 @@ public class Player : MapObject, IInputable
     {
         GameManager.Instance.ChangeScene(SceneName.Title);
     }
-    public void CheckInput()
+    public void CheckInput(List<KeyAction> actions)
     {
-        KeyAction[] actions =
-        {
+         actions.AddRange(
+        [
           new (ConsoleKey.LeftArrow,() => MoveAction(ConsoleKey.LeftArrow)),
           new (ConsoleKey.RightArrow,() => MoveAction(ConsoleKey.RightArrow)),
           new (ConsoleKey.UpArrow,() => MoveAction(ConsoleKey.UpArrow)),
           new (ConsoleKey.DownArrow,() => MoveAction(ConsoleKey.DownArrow)),
           new (ConsoleKey.Z,() => Shoot())
-        };
-        IInputable.DefaultInputCheck(actions);
+        ]);
     }
     public void Shoot()
     {
+        if(!coolTimer.IsCoolComp(shootCool)) return;
         GameState.Instance.ShootBullet(this.Position,Direction.Right,60,Faction.Player);
+        coolTimer.RefreshCool(shootCool);
     }
     public void MoveAction(ConsoleKey key)
     {
+        if(!coolTimer.IsCoolComp(moveCool)) return;
         if(key == ConsoleKey.LeftArrow)
         {
             Move(new Vector2(-1,0));
@@ -76,5 +85,9 @@ public class Player : MapObject, IInputable
         {
             Teleport(new Vector2(Position.X,GameState.MapSizeY-1));
         }
+        coolTimer.RefreshCool(moveCool);
     }
+    public CoolTimer coolTimer;
+    public const string shootCool = "shootCool";
+    public const string moveCool = "moveCool";
 }
