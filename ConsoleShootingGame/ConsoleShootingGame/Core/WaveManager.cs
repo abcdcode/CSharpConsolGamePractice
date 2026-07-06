@@ -1,6 +1,6 @@
 public class WaveManager
 {
-    public WaveManager Instance{get;private set;}
+    public static WaveManager Instance{get;private set;}
     public WaveManager()
     {
         Instance = this;

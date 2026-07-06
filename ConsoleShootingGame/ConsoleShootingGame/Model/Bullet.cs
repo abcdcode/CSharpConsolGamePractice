@@ -23,19 +23,19 @@ public class Bullet : MapObject
     public void MoveByDir()
     {
         var mResult = new Vector2();
-        if(direction == Direction.Left)
+        if(direction.HasFlag(Direction.Left))
         {
             mResult += new Vector2(-1,0);
         }
-        if(direction == Direction.Right)
+        if(direction.HasFlag(Direction.Right))
         {
             mResult += new Vector2(1,0);
         }
-        if(direction == Direction.Up)
+        if(direction.HasFlag(Direction.Up))
         {
             mResult += new Vector2(0,-1);
         }
-        if(direction == Direction.Down)
+        if(direction.HasFlag(Direction.Down))
         {
             mResult += new Vector2(0,1);
         }

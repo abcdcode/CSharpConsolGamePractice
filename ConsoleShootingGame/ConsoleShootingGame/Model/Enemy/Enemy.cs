@@ -34,6 +34,7 @@ public abstract class Enemy : MapObject
     }
     public virtual void Die()
     {
+        GameState.Instance.AddScore(this.Score);
         Delete();
     }
     public virtual void Delete()

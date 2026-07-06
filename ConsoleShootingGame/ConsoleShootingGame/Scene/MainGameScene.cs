@@ -5,6 +5,10 @@ public class MainGameScene : Scene
     public override char[,] Render()
     {
         BufferClear();
+        var stage = $"Stage : {WaveManager.Instance.curStage}";
+        var score = $"Score : {GameState.Instance.Score}";
+        var space = GameState.MapSizeX-stage.Length-score.Length;
+        DrawString(0,0,$"{stage}{new string(' ',space)}{score}");
         DrawMap(0,1);
         DrawObjects();
         return buffer;
