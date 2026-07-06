@@ -1,3 +1,4 @@
+using System.Dynamic;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -8,19 +9,30 @@ public class GameManager
     {
         Instance = this;
         Console.CursorVisible = false;
+        sceneDic = new Dictionary<SceneName, Scene>();
+        sceneDic[SceneName.Title] = new TitleScene();
+        sceneDic[SceneName.MainGame] = new MainGameScene();
     }
     public void Start()
     {
-        curScene = new TestScene();
+        ChangeScene(SceneName.Title);
         State = new GameState();
         State.player.Position = new Vector2(0,0);
         MainLoop();
     }
+    public void ChangeScene(SceneName sceneName)
+    {
+        var scene = sceneDic[sceneName];
+        scene.OnChangeScene(curScene);
+        curScene = scene;
+    }
     public async void MainLoop()
     {
-        curScene.CheckInput();
+        
         while(true)
         {
+            State.Update();
+            curScene.Update();
             //Console.SetWindowSize(curScene.CurrentWidth, curScene.CurrentHeight);
             if(lastScreenX != Console.WindowWidth || lastScreenY != Console.WindowHeight)
             {
@@ -46,10 +58,17 @@ public class GameManager
             await Task.Delay(FrameTime);
         }
     }
+    public bool IsPlaying{get;set;}
     public GameState State{get;private set;}
     public const int FrameTime = 10;
     public int lastScreenX;
     public int lastScreenY;
     public Scene curScene;
+    public Dictionary<SceneName,Scene> sceneDic;
     public bool IsRunning = true;
+}
+public enum SceneName
+{
+    Title,
+    MainGame
 }
