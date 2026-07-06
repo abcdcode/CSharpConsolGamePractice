@@ -22,6 +22,6 @@ public class ScreenConfigScene : Scene
     {
         GameManager.Instance.ChangeScene(SceneName.Title);
     }
-    public int RecommandX => GameState.MapSizeX+3;
-    public int RecommandY => GameState.MapSizeY+10;
+    public int RecommandX => GameState.MapSizeX+10;
+    public int RecommandY => GameState.MapSizeY+15;
 }

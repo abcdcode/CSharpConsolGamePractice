@@ -47,7 +47,7 @@ public class Player : MapObject, IInputable
     public void Shoot()
     {
         if(!coolTimer.IsCoolComp(shootCool)) return;
-        GameState.Instance.ShootBullet(this.Position,Direction.Right,60,Faction.Player);
+        GameState.Instance.ShootBullet(this.Position+new Vector2(1,0),Direction.Right,100,Faction.Player);
         coolTimer.RefreshCool(shootCool);
     }
     public void MoveAction(ConsoleKey key)

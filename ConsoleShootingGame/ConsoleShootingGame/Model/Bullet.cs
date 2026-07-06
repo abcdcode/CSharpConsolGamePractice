@@ -3,7 +3,11 @@ public class Bullet : MapObject
     
     public override string[] RenderShape()
     {
-        return ["-"];
+        if(faction == Faction.Player)
+        {
+            return ["○"];
+        }
+        return ["●"];
     }
     public override void Update()
     {

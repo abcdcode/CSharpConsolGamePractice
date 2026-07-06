@@ -16,6 +16,7 @@ public class GameManager
         sceneDic[SceneName.Title] = new TitleScene();
         sceneDic[SceneName.MainGame] = new MainGameScene();
         sceneDic[SceneName.Config] = new ScreenConfigScene();
+        
     }
     public void Start()
     {

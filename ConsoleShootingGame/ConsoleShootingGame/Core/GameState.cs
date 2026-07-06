@@ -5,6 +5,7 @@ public class GameState : IInputable
     {
         player = new Player();
         bulletPool = new List<Bullet>();
+        Wave = new WaveManager();
         Instance = this;
     }
     public void Init()
@@ -12,6 +13,7 @@ public class GameState : IInputable
         player = new Player();
         player.Position = new Vector2(0,MapSizeY/2);
         bulletPool = new List<Bullet>();
+        Wave.DataInit();
     }
     /// <summary>
     /// 탄환 생성
@@ -56,6 +58,7 @@ public class GameState : IInputable
 
     public Player player;
     private List<Bullet> bulletPool;
-    public const int MapSizeX = 60;
+    public WaveManager Wave{get;private set;}
+    public const int MapSizeX = 90;
     public const int MapSizeY = 15;
 }
