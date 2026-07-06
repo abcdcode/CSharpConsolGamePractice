@@ -15,6 +15,7 @@ public class GameManager
         sceneDic = new Dictionary<SceneName, Scene>();
         sceneDic[SceneName.Title] = new TitleScene();
         sceneDic[SceneName.MainGame] = new MainGameScene();
+        sceneDic[SceneName.Config] = new ScreenConfigScene();
     }
     public void Start()
     {
@@ -105,5 +106,6 @@ public class GameManager
 public enum SceneName
 {
     Title,
-    MainGame
+    MainGame,
+    Config
 }

@@ -5,9 +5,6 @@ public class MainGameScene : Scene
     public override char[,] Render()
     {
         BufferClear();
-        //DrawString(0,0,$"현재 시각 : {DateTime.Now}");
-        //DrawString(0,1,$"현재 화면 크기 : {Console.WindowWidth} , {Console.WindowHeight}");
-        //DrawString(0,2,Input);
         DrawMap(GameState.MapSizeX,GameState.MapSizeY);
         DrawObjects();
         return buffer;
@@ -30,5 +27,8 @@ public class MainGameScene : Scene
         base.OnChangeScene(prevScene);
         GameManager.Instance.IsPlaying = true;
         GameState.Instance.Init();
+    }
+    public override void CheckInput(List<KeyAction> keyInputs)
+    {
     }
 }

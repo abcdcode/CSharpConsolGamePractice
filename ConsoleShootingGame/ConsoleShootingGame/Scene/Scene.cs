@@ -61,9 +61,7 @@ public abstract class Scene : IInputable
         }
     }
 
-    public virtual void CheckInput(List<KeyAction> keyInputs)
-    {
-    }
+    public abstract void CheckInput(List<KeyAction> keyInputs);
 
     public int CurrentWidth => Console.WindowWidth;
     public int CurrentHeight => Console.WindowHeight-4;

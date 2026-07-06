@@ -30,7 +30,7 @@ public class CoolTimer
     }
     public bool IsCoolComp(string id)
     {
-        if(!coolDic.ContainsKey(id)) return false;
+        if(!coolDic.ContainsKey(id)) return true;
         return coolDic[id].cur >= coolDic[id].cool;
     }
     public void Update()

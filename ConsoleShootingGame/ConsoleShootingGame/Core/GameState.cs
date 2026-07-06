@@ -10,7 +10,7 @@ public class GameState : IInputable
     public void Init()
     {
         player = new Player();
-        player.Position = new Vector2(0,5);
+        player.Position = new Vector2(0,MapSizeY/2);
         bulletPool = new List<Bullet>();
     }
     /// <summary>
@@ -57,5 +57,5 @@ public class GameState : IInputable
     public Player player;
     private List<Bullet> bulletPool;
     public const int MapSizeX = 60;
-    public const int MapSizeY = 12;
+    public const int MapSizeY = 15;
 }
