@@ -50,6 +50,11 @@ public class GameState : IInputable
     {
         player.CheckInput(keyInputs);
     }
+    public void AddScore(int value)
+    {
+        Score += value;
+        if(Score < 0) Score = 0;
+    }
     public void Update()
     {
         if(!GameManager.Instance.IsPlaying) return;
@@ -72,9 +77,7 @@ public class GameState : IInputable
     {
         return enemyPool.ToList();
     }
-
-    
-
+    public int Score{get;private set;}
     public Player player;
     private List<Bullet> bulletPool;
     private List<Enemy> enemyPool;

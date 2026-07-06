@@ -22,22 +22,24 @@ public class Bullet : MapObject
     }
     public void MoveByDir()
     {
+        var mResult = new Vector2();
         if(direction == Direction.Left)
         {
-            Move(new Vector2(-1,0));
+            mResult += new Vector2(-1,0);
         }
         if(direction == Direction.Right)
         {
-            Move(new Vector2(1,0));
+            mResult += new Vector2(1,0);
         }
         if(direction == Direction.Up)
         {
-            Move(new Vector2(0,-1));
+            mResult += new Vector2(0,-1);
         }
         if(direction == Direction.Down)
         {
-            Move(new Vector2(0,1));
+            mResult += new Vector2(0,1);
         }
+        Move(mResult);
     }
     public void CheckOut()
     {

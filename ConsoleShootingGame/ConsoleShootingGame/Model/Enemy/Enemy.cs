@@ -6,6 +6,7 @@ public abstract class Enemy : MapObject
         this.enemyAI = ai;
         ai.Init(this);
     }
+    public virtual int Score => 1;
     public virtual int HP{get;set;}
     public abstract int MaxHP{get;}
     public override abstract string[] RenderShape();

@@ -12,6 +12,7 @@ public class GameManager
     {
         Instance = this;
         Console.CursorVisible = false;
+        State = new GameState();
         sceneDic = new Dictionary<SceneName, Scene>();
         sceneDic[SceneName.Title] = new TitleScene();
         sceneDic[SceneName.MainGame] = new MainGameScene();
@@ -21,7 +22,6 @@ public class GameManager
     public void Start()
     {
         ChangeScene(SceneName.Title);
-        State = new GameState();
         State.player.Position = new Vector2(0,0);
         MainLoop();
     }

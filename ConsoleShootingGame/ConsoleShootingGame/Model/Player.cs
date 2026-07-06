@@ -27,7 +27,7 @@ public class Player : MapObject, IInputable
                 return;
             }
         }
-        var eList = GameState.Instance.GetBulletList();
+        var eList = GameState.Instance.GetEnemyList();
         foreach(var e in eList)
         {
             if(GameRule.CheckHit(this,e))

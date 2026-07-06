@@ -5,7 +5,7 @@ public class MainGameScene : Scene
     public override char[,] Render()
     {
         BufferClear();
-        DrawMap(GameState.MapSizeX,GameState.MapSizeY);
+        DrawMap(0,1);
         DrawObjects();
         return buffer;
     }

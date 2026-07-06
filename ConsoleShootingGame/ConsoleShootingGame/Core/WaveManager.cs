@@ -66,6 +66,9 @@ public class SummonData
     public Enemy model;
     public EnemyAI enemyAI;
 }
+/// <summary>
+/// WaveData 프리셋. 메소드로 불러와서 DataInit시 알아서 새 개체로 초기화
+/// </summary>
 public static class WavePreset
 {
     public static List<WaveData> Stage1()
@@ -73,35 +76,35 @@ public static class WavePreset
         List<WaveData> data = new()
         {
             new(1000,[
-                new(new(100,0),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,14),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,0),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,14),new Jaco(),new MoveAndAttack(8,1))
             ]),
             new(2500,[
-                new(new(100,1),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,13),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,1),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,13),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(4000,[
-                new(new(100,2),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,12),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,2),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,12),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(5500,[
-                new(new(100,3),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,11),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,3),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,11),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(7000,[
-                new(new(100,4),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,10),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,4),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,10),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(8500,[
-                new(new(100,5),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,9),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,5),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,9),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(10000,[
-                new(new(100,6),new Jaco(),new MoveAndAttack(6,1)),
-                new(new(100,8),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,6),new Jaco(),new MoveAndAttack(8,1)),
+                new(new(100,8),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(11500,[
-                new(new(100,7),new Jaco(),new MoveAndAttack(6,1))
+                new(new(100,7),new Jaco(),new MoveAndAttack(8,1))
                 ]),
         };
         return data;
@@ -111,7 +114,33 @@ public static class WavePreset
         List<WaveData> data = new()
         {
             new(1000,[
-                new(new(100,6),new Shielder(),new MoveAndAttack(4,1))
+                new(new(100,2),new Shielder(),new JustMove(6))
+            ]),
+            new(1500,[
+                new(new(100,3),new Jaco(),new MoveAndAttack(6,1))
+            ]),
+            new(1700,[
+                new(new(100,2),new Jaco(),new MoveAndAttack(6,1)),
+                new(new(100,4),new Jaco(),new MoveAndAttack(6,1))
+            ]),
+            new(1900,[
+                new(new(100,1),new Jaco(),new MoveAndAttack(6,1)),
+                new(new(100,5),new Jaco(),new MoveAndAttack(6,1))
+            ]),
+
+            new(2000,[
+                new(new(100,8),new Shielder(),new JustMove(6))
+            ]),
+            new(2500,[
+                new(new(100,9),new Jaco(),new MoveAndAttack(6,1))
+            ]),
+            new(2700,[
+                new(new(100,8),new Jaco(),new MoveAndAttack(6,1)),
+                new(new(100,10),new Jaco(),new MoveAndAttack(6,1))
+            ]),
+            new(2900,[
+                new(new(100,7),new Jaco(),new MoveAndAttack(6,1)),
+                new(new(100,11),new Jaco(),new MoveAndAttack(6,1))
             ]),
         };
         return data;

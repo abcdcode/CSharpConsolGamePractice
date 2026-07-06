@@ -1,3 +1,5 @@
+using System.Data;
+
 public abstract class Scene : IInputable
 {
     public abstract char[,] Render();
@@ -18,14 +20,15 @@ public abstract class Scene : IInputable
             }
         }
     }
-    // 맵 그리기. 항상 좌상단 0,0부터 그림. x와 y는 맵 크기
+    // 맵 그리기
     public void DrawMap(int x, int y)
     {
-        x = buffer.GetLength(1) > x ? x : buffer.GetLength(1);
-        y = buffer.GetLength(0) > y ? y : buffer.GetLength(0);
-        for(int i = 0 ; i < x; i++)
+        mapPos = new Vector2(x,y);
+        //x = buffer.GetLength(1) > x ? x : buffer.GetLength(1);
+        //y = buffer.GetLength(0) > y ? y : buffer.GetLength(0);
+        for(int i = x ; i < GameState.MapSizeX+x; i++)
         {
-            for(int j = 0 ; j < y; j++)
+            for(int j = y ; j < GameState.MapSizeY+y; j++)
             {
                 DrawChar(i,j,'.');
             }
@@ -49,9 +52,9 @@ public abstract class Scene : IInputable
     }
     protected void DrawObject(MapObject obj)
     {
-        int x = obj.Position.X;
-        int y = obj.Position.Y;
-        DrawSString(x,y,obj.RenderShape(), GameState.MapSizeX,GameState.MapSizeY);
+        int x = obj.Position.X+mapPos.X;
+        int y = obj.Position.Y+mapPos.Y;
+        DrawSString(x,y,obj.RenderShape(), GameState.MapSizeX+mapPos.X,GameState.MapSizeY+mapPos.Y);
     }
     protected void DrawSString(int x, int y, string[] ttext, int mX = 999, int mY = 999)
     {
@@ -62,7 +65,7 @@ public abstract class Scene : IInputable
     }
 
     public abstract void CheckInput(List<KeyAction> keyInputs);
-
+    public Vector2 mapPos;
     public int CurrentWidth => Console.WindowWidth;
     public int CurrentHeight => Console.WindowHeight-4;
     public char[,] buffer;

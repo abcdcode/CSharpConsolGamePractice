@@ -15,6 +15,7 @@ public class MoveAndAttack : EnemyAI
     }
     public override void Update()
     {
+        base.Update();
         coolTimer.Update();
     }
     public void AttackTime()
