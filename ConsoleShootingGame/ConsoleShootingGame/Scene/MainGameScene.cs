@@ -16,6 +16,11 @@ public class MainGameScene : Scene
         {
             DrawObject(b);
         }
+        var eList = GameState.Instance.GetEnemyList();
+        foreach(var e in eList)
+        {
+            DrawObject(e);
+        }
         var p = GameState.Instance.player;
         DrawObject(p);
     }

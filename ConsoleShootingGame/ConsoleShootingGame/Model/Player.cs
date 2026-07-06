@@ -18,11 +18,19 @@ public class Player : MapObject, IInputable
     }
     public void CheckHit()
     {
-        var bList = GameState.Instance.GetBulletList();
+        var bList = GameState.Instance.GetBulletList().FindAll(x => x.faction == Faction.Enemy);
         foreach(var b in bList)
         {
-            if(b.faction == Faction.Player) continue;
             if(GameRule.CheckHit(this,b))
+            {
+                Hit();
+                return;
+            }
+        }
+        var eList = GameState.Instance.GetBulletList();
+        foreach(var e in eList)
+        {
+            if(GameRule.CheckHit(this,e))
             {
                 Hit();
                 return;

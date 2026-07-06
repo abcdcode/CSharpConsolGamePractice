@@ -1,0 +1,17 @@
+public class Shielder : Enemy
+{
+    public override int MaxHP => 30;
+
+    public override Vector2 GetSize()
+    {
+        return new Vector2(3,3);
+    }
+    public override string[] RenderShape()
+    {
+        return[
+            "■■■",
+            "■■",
+            "■■■"
+        ];
+    }
+}
