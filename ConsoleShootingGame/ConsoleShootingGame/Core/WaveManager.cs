@@ -145,4 +145,14 @@ public static class WavePreset
         };
         return data;
     } 
+    public static List<WaveData> Stage3()
+    {
+        List<WaveData> data = new()
+        {
+            new(1000,[
+                new(new(100,2),new Shielder(),new JustMove(6))
+            ]),
+        };
+        return data;
+    } 
 }
