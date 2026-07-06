@@ -1,6 +1,6 @@
 public class Elite : Enemy
 {
-    public override int MaxHP => throw new NotImplementedException();
+    public override int MaxHP => 75;
     public override int Score => 20;
     public override Vector2 GetSize()
     {

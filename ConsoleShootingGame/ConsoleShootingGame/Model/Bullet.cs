@@ -31,14 +31,19 @@ public class Bullet : MapObject
         {
             mResult += new Vector2(1,0);
         }
-        if(direction.HasFlag(Direction.Up))
+        if(UpDownSpeedLimit >= UpDownCount)
         {
-            mResult += new Vector2(0,-1);
+            UpDownSpeedLimit = 0;
+            if(direction.HasFlag(Direction.Up))
+            {
+                mResult += new Vector2(0,-1);
+            }
+            if(direction.HasFlag(Direction.Down))
+            {
+                mResult += new Vector2(0,1);
+            }
         }
-        if(direction.HasFlag(Direction.Down))
-        {
-            mResult += new Vector2(0,1);
-        }
+        UpDownSpeedLimit += 1;
         Move(mResult);
     }
     public void CheckOut()
@@ -48,6 +53,10 @@ public class Bullet : MapObject
             GameState.Instance.DeleteBullet(this);
         }
     }
+    //실제 대각선 사격 상하 이동 카운팅
+    private int UpDownSpeedLimit = 0;
+    //대각선 사격 시 속도 제어용
+    public int UpDownCount = 3;
     public int posProgress = 0;
     public int bulletSpeed = 100;
     public Direction direction;

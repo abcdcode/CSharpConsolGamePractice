@@ -21,16 +21,18 @@ public class GameState : IInputable
     /// 탄환 생성
     /// </summary>
     /// <param name="pos">생성 위치</param>
-    /// <param name="dir">발사 방향</param>
+    /// <param name="dir">발사 방향. Direction.Left | Direction.Up 이런식으로 대각선 방향도 가능</param>
     /// <param name="bulletSpeed">탄환 속도. 1이면 1초에 1칸.</param>
+    /// <param name="updownSpeed">탄환 상하 속도. upDownSpeed 횟수만큼 이동을 스킵함. 이걸로 대각선 사격 시 각도를 조정가능</param>
     /// <returns></returns>
-    public Bullet ShootBullet(Vector2 pos, Direction dir, int bulletSpeed, Faction faction)
+    public Bullet ShootBullet(Vector2 pos, Direction dir, int bulletSpeed, Faction faction, int updownSpeed = 1)
     {
         Bullet b = new Bullet();
         b.Position = pos;
         b.direction = dir;
         b.bulletSpeed = 1000/bulletSpeed;
         b.faction = faction;
+        b.UpDownCount = updownSpeed;
         bulletPool.Add(b);
         return b;
     }
