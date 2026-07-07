@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 public class MainGameScene : Scene
@@ -17,6 +18,11 @@ public class MainGameScene : Scene
         DrawString(0,drawY,$"Atk:[{new string('□',GameState.Instance.PStat.Atk)}]");
         DrawString(0,drawY+1,$"Atk Speed:[{new string('□',GameState.Instance.PStat.ShotSpeed/2)}]");
         DrawString(0,drawY+2,$"Move Speed:[{new string('□',GameState.Instance.PStat.Speed/5)}]");
+
+        if(!GameManager.Instance.IsPlaying)
+        {
+            DrawSString(0,5,GameOver());
+        }
         return buffer;
     }
     public void DrawObjects()
@@ -50,5 +56,15 @@ public class MainGameScene : Scene
     }
     public override void CheckInput(List<KeyAction> keyInputs)
     {
+    }
+    public string[] GameOver() 
+    {
+        return [
+            """  _______      ___       ___  ___   _______      ______   ____    ____  _______ .______      """,
+            """ /  _____|    /   \     |   \/   | |   ____|    /  __  \  \   \  /   / |   ____||   _  \     """,
+            """|  |  __     /  ^  \    |  \  /  | |  |__      |  |  |  |  \   \/   /  |  |__   |  |_)  |    """,
+            """|  | |_ |   /  /_\  \   |  |\/|  | |   __|     |  |  |  |   \      /   |   __|  |      /     """,
+            """|  |__| |  /  _____  \  |  |  |  | |  |____    |  `--'  |    \    /    |  |____ |  |\  \     """,
+            """ \______| /__/     \__\ |__|  |__| |_______|    \______/      \__/     |_______|| _| `__|    """];
     }
 }

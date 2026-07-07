@@ -39,6 +39,12 @@ public class Player : MapObject, IInputable
     }
     public void Hit()
     {
+        GameOverCoroutine();
+    }
+    public async void GameOverCoroutine()
+    {
+        GameManager.Instance.IsPlaying = false;
+        await Task.Delay(3000);
         GameManager.Instance.ChangeScene(SceneName.Title);
     }
     public void CheckInput(List<KeyAction> actions)
