@@ -19,6 +19,7 @@ public class MainGameScene : Scene
         DrawString(0,drawY+1,$"Atk Speed:[{new string('□',GameState.Instance.PStat.ShotSpeed/2)}]");
         DrawString(0,drawY+2,$"Move Speed:[{new string('□',GameState.Instance.PStat.Speed/5)}]");
 
+        //플레이어 사망 시 게임오버
         if(!GameManager.Instance.IsPlaying)
         {
             DrawSString(0,5,GameOver());

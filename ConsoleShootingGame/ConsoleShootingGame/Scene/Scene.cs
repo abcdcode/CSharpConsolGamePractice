@@ -62,12 +62,12 @@ public abstract class Scene : IInputable
     /// <param name="mY"></param>
     protected void DrawString(int x, int y, string text, int mX = 999, int mY = 999)
     {
-        if(x < 0 || y < 0) return;
+        if(y < 0) return;
         if(Math.Min(buffer.GetLength(0),mY) <= y) return;
         for (int i = 0; i < text.Length; i++)
         {
-            if (x + i >= Math.Min(buffer.GetLength(1),mX))
-                break;
+            if (x + i >= Math.Min(buffer.GetLength(1),mX) || x < 0)
+                continue;
             buffer[y, x + i] = text[i];
         }
     }
