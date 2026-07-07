@@ -10,6 +10,7 @@ public class MainGameScene : Scene
         var space = GameState.MapSizeX-stage.Length-score.Length;
         DrawString(0,0,$"{stage}{new string(' ',space)}{score}");
         DrawMap(0,1);
+        int drawY = GameState.MapSizeY+1;
         DrawObjects();
         return buffer;
     }

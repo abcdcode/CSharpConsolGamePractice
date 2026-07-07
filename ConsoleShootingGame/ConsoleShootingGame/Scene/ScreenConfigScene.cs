@@ -1,3 +1,6 @@
+/// <summary>
+/// 화면 체크 씬. 스크린 크기가 일정 크기 이상이 안되면 정상적으로 맵이 렌더링되지 않으므로 여기서 맞추도록 함
+/// </summary>
 public class ScreenConfigScene : Scene
 {
     public override char[,] Render()
@@ -22,6 +25,6 @@ public class ScreenConfigScene : Scene
     {
         GameManager.Instance.ChangeScene(SceneName.Title);
     }
-    public int RecommandX => GameState.MapSizeX+10;
-    public int RecommandY => GameState.MapSizeY+15;
+    public static int RecommandX => GameState.MapSizeX+10;
+    public static int RecommandY => GameState.MapSizeY+15;
 }

@@ -34,10 +34,24 @@ public abstract class Scene : IInputable
             }
         }
     }
+    /// <summary>
+    /// 문자 한개 그리기
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="txt"></param>
     protected void DrawChar(int x, int y, char txt)
     {
         DrawString(x,y,txt.ToString());
     }
+    /// <summary>
+    /// 문자열 한줄 그리기
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="text"></param>
+    /// <param name="mX"></param>
+    /// <param name="mY"></param>
     protected void DrawString(int x, int y, string text, int mX = 999, int mY = 999)
     {
         if(x < 0 || y < 0) return;
@@ -50,6 +64,10 @@ public abstract class Scene : IInputable
             buffer[y, x + i] = text[i];
         }
     }
+    /// <summary>
+    /// 맵 오브젝트 그리기. 맵 좌표 내에서만 그려지도록 제한됨
+    /// </summary>
+    /// <param name="obj"></param>
     protected void DrawObject(MapObject obj)
     {
         int x = obj.Position.X+mapPos.X;
