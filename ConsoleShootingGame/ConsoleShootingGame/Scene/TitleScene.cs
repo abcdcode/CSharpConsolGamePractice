@@ -37,7 +37,13 @@ public class TitleScene : Scene
     }
     public void StartGame()
     {
-        GameManager.Instance.ChangeScene(SceneName.MainGame);
+        if(Console.WindowWidth < ScreenConfigScene.RecommandX || Console.WindowHeight < ScreenConfigScene.RecommandY)
+        {
+            GameManager.Instance.ChangeScene(SceneName.ScreenSmall);
+        }else
+        {
+            GameManager.Instance.ChangeScene(SceneName.MainGame);
+        }
     }
     public void ConfigStart()
     {

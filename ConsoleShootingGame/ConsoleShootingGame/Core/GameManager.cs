@@ -5,6 +5,7 @@ using System.Text;
 
 public class GameManager
 {
+    //키 인풋을 위한 라이브러리.
     [DllImport("user32.dll")]
     static extern short GetAsyncKeyState(int vKey);
     public static GameManager Instance{get;private set;}
@@ -17,6 +18,7 @@ public class GameManager
         sceneDic[SceneName.Title] = new TitleScene();
         sceneDic[SceneName.MainGame] = new MainGameScene();
         sceneDic[SceneName.Config] = new ScreenConfigScene();
+        sceneDic[SceneName.ScreenSmall] = new IsSureScene();
         
     }
     public void Start()
@@ -86,15 +88,32 @@ public class GameManager
             
             for(int y = 0 ; y < b.GetLength(0); y++)
             {
-                for(int x = 0 ; x < b.GetLength(1); x++)
+                int pointer = 0;
+                for(int x = 0 ; x < b.GetLength(1) - pointer; x++)
                 {
                     sb.Append(b[y,x]);
+                    if(GetWidth(b[y,x]) == 2)
+                {
+                    pointer += 1;
+                }
                 }
                 sb.AppendLine();
             }
-            Console.WriteLine(sb.ToString());
+            Console.Write(sb.ToString());
             Console.SetCursorPosition(0, 0);
     }
+    public static int GetWidth(char c)
+{
+    // 한글 음절
+    if (c >= 0xAC00 && c <= 0xD7A3)
+        return 2;
+
+    // 한글 자모
+    if (c >= 0x1100 && c <= 0x11FF)
+        return 2;
+
+    return 1;
+}
     public bool IsPlaying{get;set;}
     public GameState State{get;private set;}
     public const int FrameTime = 10;
@@ -108,5 +127,6 @@ public enum SceneName
 {
     Title,
     MainGame,
-    Config
+    Config,
+    ScreenSmall
 }

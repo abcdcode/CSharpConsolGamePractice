@@ -60,7 +60,6 @@ public abstract class Scene : IInputable
         {
             if (x + i >= Math.Min(buffer.GetLength(1),mX))
                 break;
-
             buffer[y, x + i] = text[i];
         }
     }
@@ -81,10 +80,15 @@ public abstract class Scene : IInputable
             DrawString(x,y+i,ttext[i],mX,mY);
         }
     }
-
+    /// <summary>
+    /// 문자열의 좌우폭 체크
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    
     public abstract void CheckInput(List<KeyAction> keyInputs);
     public Vector2 mapPos;
     public int CurrentWidth => Console.WindowWidth;
     public int CurrentHeight => Console.WindowHeight-4;
-    public char[,] buffer;
+    public static char[,] buffer;
 }
