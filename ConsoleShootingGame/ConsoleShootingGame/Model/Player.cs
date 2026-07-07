@@ -21,7 +21,7 @@ public class Player : MapObject, IInputable
         var bList = GameState.Instance.GetBulletList().FindAll(x => x.faction == Faction.Enemy);
         foreach(var b in bList)
         {
-            if(GameRule.CheckHit(this,b))
+            if(GameUtil.CheckHit(this,b))
             {
                 Hit();
                 return;
@@ -30,7 +30,7 @@ public class Player : MapObject, IInputable
         var eList = GameState.Instance.GetEnemyList();
         foreach(var e in eList)
         {
-            if(GameRule.CheckHit(this,e))
+            if(GameUtil.CheckHit(this,e))
             {
                 Hit();
                 return;

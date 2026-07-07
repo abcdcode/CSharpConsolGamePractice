@@ -3,6 +3,9 @@ using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 
+/// <summary>
+/// 게임 전체 총괄 GOD 클래스
+/// </summary>
 public class GameManager
 {
     //키 인풋을 위한 라이브러리.
@@ -102,6 +105,7 @@ public class GameManager
             Console.Write(sb.ToString());
             Console.SetCursorPosition(0, 0);
     }
+    //한글이면 버퍼 2칸 차지해야함. 챗지피티 작품
     public static int GetWidth(char c)
 {
     // 한글 음절

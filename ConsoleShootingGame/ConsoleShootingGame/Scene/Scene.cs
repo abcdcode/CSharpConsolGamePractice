@@ -2,6 +2,10 @@ using System.Data;
 
 public abstract class Scene : IInputable
 {
+    /// <summary>
+    /// 화면 렌더링 메소드. buffer에 쌓아서 보내기
+    /// </summary>
+    /// <returns></returns>
     public abstract char[,] Render();
     public abstract void Update();
     public virtual void OnChangeScene(Scene prevScene)
@@ -20,7 +24,11 @@ public abstract class Scene : IInputable
             }
         }
     }
-    // 맵 그리기
+    /// <summary>
+    /// 맵 그리기
+    /// </summary>
+    /// <param name="x">시작 x좌표</param>
+    /// <param name="y">시작 y좌표</param>
     public void DrawMap(int x, int y)
     {
         mapPos = new Vector2(x,y);

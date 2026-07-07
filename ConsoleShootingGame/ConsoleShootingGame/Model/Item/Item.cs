@@ -22,7 +22,7 @@ public abstract class Item : MapObject
     public void PlayerCheck()
     {
         Player p = GameState.Instance.player;
-        if(GameRule.CheckHit(p,this))
+        if(GameUtil.CheckHit(p,this))
         {
             Earn();
             DeleteItem();
@@ -38,7 +38,7 @@ public abstract class Item : MapObject
     }
     public void MoveTime()
     {
-        var movePos = GameRule.MovePosByDirection(directionLR | directionUD);
+        var movePos = GameUtil.MovePosByDirection(directionLR | directionUD);
         Move(movePos);
         if(Position.X == 0)
         {

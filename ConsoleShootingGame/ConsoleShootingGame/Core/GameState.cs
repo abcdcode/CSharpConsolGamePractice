@@ -1,3 +1,6 @@
+/// <summary>
+/// 인게임 상태 전체 총괄 클래스
+/// </summary>
 public class GameState : IInputable
 {
     public static GameState Instance{get;private set;}

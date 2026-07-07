@@ -25,7 +25,7 @@ public abstract class Enemy : MapObject
         var list = GameState.Instance.GetBulletList().FindAll(x => x.faction == Faction.Player);
         foreach(var b in list)
         {
-            var isHit = GameRule.CheckHit(this,b);
+            var isHit = GameUtil.CheckHit(this,b);
             if(isHit)
             {
                 TakeDamage(GameState.Instance.PStat.Atk);

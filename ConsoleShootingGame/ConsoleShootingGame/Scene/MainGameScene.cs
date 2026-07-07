@@ -8,10 +8,10 @@ public class MainGameScene : Scene
         var stage = $"Stage : {WaveManager.Instance.curStage}";
         var score = $"Score : {GameState.Instance.Score}";
         var space = GameState.MapSizeX-stage.Length-score.Length;
-        DrawString(0,0,$"{stage}{new string(' ',space)}{score}");
-        DrawMap(0,1);
+        DrawString(0,0,$"{stage}{new string(' ',space)}{score}"); //현재 스테이지와 스코어 값을 최상단에 배치
+        DrawMap(0,1); // 맵 그리기
+        DrawObjects(); // 맵 위 오브젝트들 그리기
         int drawY = GameState.MapSizeY+1;
-        DrawObjects();
         return buffer;
     }
     public void DrawObjects()
