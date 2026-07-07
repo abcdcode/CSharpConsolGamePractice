@@ -14,6 +14,7 @@ public class GameState : IInputable
     {
         player = new Player();
         player.Position = new Vector2(0,MapSizeY/2);
+        PStat = new PlayerStat();
         bulletPool = new List<Bullet>();
         enemyPool = new List<Enemy>();
         itemPool = new List<Item>();
@@ -95,6 +96,7 @@ public class GameState : IInputable
     }
     public int Score{get;private set;}
     public Player player;
+    public PlayerStat PStat{get;private set;}
     private List<Bullet> bulletPool;
     private List<Enemy> enemyPool;
     private List<Item> itemPool;
