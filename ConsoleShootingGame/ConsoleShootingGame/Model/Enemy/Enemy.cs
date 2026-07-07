@@ -34,7 +34,10 @@ public abstract class Enemy : MapObject
     }
     public virtual void Die()
     {
-        GameState.Instance.AddScore(this.Score);
+        if(!isToken)
+        {
+            GameState.Instance.AddScore(this.Score);
+        }
         Delete();
     }
     public virtual void Delete()
@@ -53,7 +56,6 @@ public abstract class Enemy : MapObject
     {
         HP = Math.Min(MaxHP,HP+value);
     }
-    
-
+    public bool isToken = false;
     protected EnemyAI enemyAI;
 }

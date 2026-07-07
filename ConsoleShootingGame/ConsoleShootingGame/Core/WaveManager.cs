@@ -10,8 +10,9 @@ public class WaveManager
         waveDic = new Dictionary<int, List<WaveData>>();
         waveDic[1] = WavePreset.Stage1();
         waveDic[2] = WavePreset.Stage2();
+        waveDic[3] = WavePreset.Stage3();
         curTime = 0;
-        curStage = 1;
+        curStage = 3;
     }
     public void Update()
     {
@@ -139,7 +140,7 @@ public static class WavePreset
                 new(new(100,10),new Jaco(),new MoveAndAttack(6,1))
             ]),
             new(2900,[
-                new(new(100,7),new Jaco(),new MoveAndAttack(6,1)),
+                new(new(100,5),new Jaco(),new MoveAndAttack(6,1)),
                 new(new(100,11),new Jaco(),new MoveAndAttack(6,1))
             ]),
         };
@@ -150,7 +151,7 @@ public static class WavePreset
         List<WaveData> data = new()
         {
             new(1000,[
-                new(new(100,2),new Shielder(),new JustMove(6))
+                new(new(100,7),new Elite(),new EliteAI(new(80,7),9,1.5f))
             ]),
         };
         return data;

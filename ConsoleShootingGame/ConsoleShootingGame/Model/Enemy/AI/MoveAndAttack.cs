@@ -20,7 +20,7 @@ public class MoveAndAttack : EnemyAI
     }
     public void AttackTime()
     {
-        int purpleRight = owner.GetSize().X/2;
+        int purpleRight = owner.GetSize().Y/2;
         GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left,50,Faction.Enemy);
         GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,5);
         GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Down,50,Faction.Enemy,5);
