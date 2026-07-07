@@ -29,7 +29,7 @@ public class WaveManager
                 foreach(var s in w.summonDatas)
                 {
                     s.model.Position = s.pos;
-                    s.model.Init(s.enemyAI);
+                    s.model.Init(s.enemyAI,s.dropItem);
                     GameState.Instance.AddEnemy(s.model);
                 }
                 list.Remove(w);
@@ -57,15 +57,20 @@ public class WaveData
 }
 public class SummonData
 {
-    public SummonData(Vector2 p, Enemy m, EnemyAI ai)
+    public SummonData(Vector2 p, Enemy m, EnemyAI ai):this(p,m,ai,null)
+    {
+    }
+    public SummonData(Vector2 p, Enemy m, EnemyAI ai,Item d)
     {
         pos = p;
         model = m;
         enemyAI = ai;
+        dropItem = d;
     }
     public Vector2 pos;
     public Enemy model;
     public EnemyAI enemyAI;
+    public Item dropItem;
 }
 /// <summary>
 /// WaveData 프리셋. 메소드로 불러와서 DataInit시 알아서 새 개체로 초기화

@@ -1,9 +1,10 @@
 public abstract class Enemy : MapObject
 {
-    public virtual void Init(EnemyAI ai)
+    public virtual void Init(EnemyAI ai, Item d)
     {
         HP = MaxHP;
         this.enemyAI = ai;
+        dropItem = d;
         ai.Init(this);
     }
     public virtual int Score => 1;
@@ -38,6 +39,10 @@ public abstract class Enemy : MapObject
         {
             GameState.Instance.AddScore(this.Score);
         }
+        if(dropItem != null)
+        {
+            GameState.Instance.AddItem(dropItem);
+        }
         Delete();
     }
     public virtual void Delete()
@@ -58,4 +63,5 @@ public abstract class Enemy : MapObject
     }
     public bool isToken = false;
     protected EnemyAI enemyAI;
+    protected Item dropItem;
 }
