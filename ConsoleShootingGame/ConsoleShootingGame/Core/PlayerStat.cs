@@ -34,7 +34,7 @@ public class PlayerStat
     {
         Speed = Math.Max(1,Speed+value);
     }
-    public void AddShopSpeed(int value)
+    public void AddShotSpeed(int value)
     {
         ShotSpeed = Math.Max(1,ShotSpeed+value);
     }

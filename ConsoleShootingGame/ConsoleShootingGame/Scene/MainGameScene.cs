@@ -12,6 +12,11 @@ public class MainGameScene : Scene
         DrawMap(0,1); // 맵 그리기
         DrawObjects(); // 맵 위 오브젝트들 그리기
         int drawY = GameState.MapSizeY+1;
+
+        //플레이어 스탯들 그리기
+        DrawString(0,drawY,$"Atk:[{new string('□',GameState.Instance.PStat.Atk)}]");
+        DrawString(0,drawY+1,$"Atk Speed:[{new string('□',GameState.Instance.PStat.ShotSpeed/2)}]");
+        DrawString(0,drawY+2,$"Move Speed:[{new string('□',GameState.Instance.PStat.Speed/5)}]");
         return buffer;
     }
     public void DrawObjects()

@@ -12,9 +12,9 @@ public class GameState : IInputable
     public void Init()
     {
         Score = 0;
+        PStat = new PlayerStat();
         player = new Player();
         player.Position = new Vector2(0,MapSizeY/2);
-        PStat = new PlayerStat();
         bulletPool = new List<Bullet>();
         enemyPool = new List<Enemy>();
         itemPool = new List<Item>();

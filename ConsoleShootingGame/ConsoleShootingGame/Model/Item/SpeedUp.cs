@@ -7,6 +7,6 @@ public class SpeedUp : Item
     }
     public override string[] RenderShape()
     {
-        return ["P"];
+        return ["S"];
     }
 }
