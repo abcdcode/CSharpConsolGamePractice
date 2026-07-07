@@ -20,6 +20,23 @@ public static class GameRule
     }
     public static Vector2 MovePosByDirection(Direction dir,int moveValue = 1)
     {
-        
+        var mResult = new Vector2();
+        if(dir.HasFlag(Direction.Left))
+        {
+            mResult += new Vector2(-1,0);
+        }
+        if(dir.HasFlag(Direction.Right))
+        {
+            mResult += new Vector2(1,0);
+        }
+        if(dir.HasFlag(Direction.Up))
+        {
+            mResult += new Vector2(0,-1);
+        }
+        if(dir.HasFlag(Direction.Down))
+        {
+            mResult += new Vector2(0,1);
+        }
+        return mResult;
     }
 }

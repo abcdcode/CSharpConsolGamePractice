@@ -3,21 +3,19 @@ public class GameState : IInputable
     public static GameState Instance{get;private set;}
     public GameState()
     {
-        player = new Player();
-        bulletPool = new List<Bullet>();
-        enemyPool = new List<Enemy>();
-        itemPool = new List<Item>();
-        Wave = new WaveManager();
         Instance = this;
+        Init();
     }
     public void Init()
     {
+        Score = 0;
         player = new Player();
         player.Position = new Vector2(0,MapSizeY/2);
         PStat = new PlayerStat();
         bulletPool = new List<Bullet>();
         enemyPool = new List<Enemy>();
         itemPool = new List<Item>();
+        Wave = new WaveManager();
         Wave.DataInit();
     }
     /// <summary>
@@ -79,6 +77,10 @@ public class GameState : IInputable
         foreach(var e in GetEnemyList())
         {
             e.Update();
+        }
+        foreach(var i in GetItemList())
+        {
+            i.Update();
         }
         Wave.Update();
     }

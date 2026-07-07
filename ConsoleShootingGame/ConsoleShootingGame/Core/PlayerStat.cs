@@ -26,4 +26,16 @@ public class PlayerStat
     /// 폭탄 갯수. 대충 화면 전체에 대량에 피해를 주는 뭐시깽이로 생각 중
     /// </summary>
     public int BombCount{get;private set;}
+    public void AddAtk(int value)
+    {
+        Atk = Math.Max(1,Atk+value);
+    }
+    public void AddSpeed(int value)
+    {
+        Speed = Math.Max(1,Speed+value);
+    }
+    public void AddShopSpeed(int value)
+    {
+        ShotSpeed = Math.Max(1,ShotSpeed+value);
+    }
 }

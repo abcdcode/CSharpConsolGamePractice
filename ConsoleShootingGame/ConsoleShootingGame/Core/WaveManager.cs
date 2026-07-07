@@ -110,7 +110,7 @@ public static class WavePreset
                 new(new(100,8),new Jaco(),new MoveAndAttack(8,1))
                 ]),
             new(11500,[
-                new(new(100,7),new Jaco(),new MoveAndAttack(8,1))
+                new(new(100,7),new Jaco(),new MoveAndAttack(8,1),new PowerUp())
                 ]),
         };
         return data;

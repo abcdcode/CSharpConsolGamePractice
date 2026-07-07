@@ -28,19 +28,29 @@ public abstract class Enemy : MapObject
             var isHit = GameRule.CheckHit(this,b);
             if(isHit)
             {
-                TakeDamage(1);
+                TakeDamage(GameState.Instance.PStat.Atk);
                 GameState.Instance.DeleteBullet(b);
             }
         }
     }
     public virtual void Die()
     {
+        //다른 적에 의해 소환된 토큰형 몹이라면 점수를 제공하지 않음
         if(!isToken)
         {
             GameState.Instance.AddScore(this.Score);
         }
+        //드랍 정보가 있다면 드랍. 좌측 방향 디폴트에 무작위로 위아래 중 한 방향으로 대각선 드랍
         if(dropItem != null)
         {
+            int rand = GameUtil.RandomRange(0,2);
+            Direction dir = Direction.Up;
+            if(rand == 0)
+            {
+                dir = Direction.Down;
+            }
+            dropItem.Init(Direction.Left,dir);
+            dropItem.Position = this.Position;
             GameState.Instance.AddItem(dropItem);
         }
         Delete();
