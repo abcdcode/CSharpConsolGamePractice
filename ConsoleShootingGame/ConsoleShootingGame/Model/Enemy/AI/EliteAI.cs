@@ -23,21 +23,20 @@ public class EliteAI : EnemyAI
         if(attackPattern == 0)
         {
             GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left,50,Faction.Enemy);
-            coolTimer.RefreshCool(Attack);
         }
         else if(attackPattern == 1)
         {
-            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,8);
-            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,8);
-            coolTimer.RefreshCool(Attack);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,15);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Down,50,Faction.Enemy,15);
         }
         else if(attackPattern == 2)
         {
-            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,5);
-            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,5);
-            coolTimer.RefreshCool(Attack);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Up,50,Faction.Enemy,10);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(-1,purpleRight),Direction.Left | Direction.Down,50,Faction.Enemy,10);
+            attackPattern = -1;
         }
         attackPattern += 1;
+        coolTimer.RefreshCool(Attack);
     }
     public void MoveTime()
     {

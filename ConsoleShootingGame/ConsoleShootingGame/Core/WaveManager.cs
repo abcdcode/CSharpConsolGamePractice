@@ -140,7 +140,7 @@ public static class WavePreset
                 new(new(100,10),new Jaco(),new MoveAndAttack(6,1))
             ]),
             new(2900,[
-                new(new(100,5),new Jaco(),new MoveAndAttack(6,1)),
+                new(new(100,7),new Jaco(),new MoveAndAttack(6,1)),
                 new(new(100,11),new Jaco(),new MoveAndAttack(6,1))
             ]),
         };
@@ -151,7 +151,10 @@ public static class WavePreset
         List<WaveData> data = new()
         {
             new(1000,[
-                new(new(100,7),new Elite(),new EliteAI(new(80,7),9,1.5f))
+                new(new(100,2),new Elite(),new EliteAI(new(80,2),10,3f))
+            ]),
+            new(1200,[
+                new(new(100,8),new Elite(),new EliteAI(new(80,8),10,3.5f))
             ]),
         };
         return data;

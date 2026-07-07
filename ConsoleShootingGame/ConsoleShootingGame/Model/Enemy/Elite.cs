@@ -4,16 +4,16 @@ public class Elite : Enemy
     public override int Score => 20;
     public override Vector2 GetSize()
     {
-        return new Vector2(3,5);
+        return new Vector2(4,5);
     }
     public override string[] RenderShape()
     {
         return [
-            "  ■ ",
-            " ■■■",
-            "■■■ ",
-            " ■■■",
-            "  ■ ",
+            "..■.",
+            ".■■■",
+            "■■■.",
+            ".■■■",
+            "..■.",
         ];
     }
 }
