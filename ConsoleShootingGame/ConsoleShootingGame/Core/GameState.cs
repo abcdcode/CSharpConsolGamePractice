@@ -16,6 +16,7 @@ public class GameState : IInputable
         player.Position = new Vector2(0,MapSizeY/2);
         bulletPool = new List<Bullet>();
         enemyPool = new List<Enemy>();
+        itemPool = new List<Item>();
         Wave.DataInit();
     }
     /// <summary>
