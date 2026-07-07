@@ -12,6 +12,11 @@ public abstract class Item : MapObject
         directionUD = dirUD;
     }
     public abstract override string[] RenderShape();
+    //그래픽상 크기는 1x1이지만 아이템 수집 범위는 넓게 구현
+    public override Vector2 GetSize()
+    {
+        return new Vector2(5,5);
+    }
     public override void Update()
     {
         base.Update();
@@ -22,7 +27,8 @@ public abstract class Item : MapObject
     public void PlayerCheck()
     {
         Player p = GameState.Instance.player;
-        if(GameUtil.CheckHit(p,this))
+        //아이템 먹기 편하라고 중앙 좌표로 size만큼 체크
+        if(GameUtil.CheckHitCenter(p,this))
         {
             Earn();
             DeleteItem();

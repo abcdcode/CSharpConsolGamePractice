@@ -22,12 +22,34 @@ public static class GameUtil
         if (angle < 0) angle += 360;
         return angle;
     }
+    //맵 오브젝트간 충돌 체크. 챗지피티가 해줌
     public static bool CheckHit(MapObject a, MapObject b)
     {
         var posA = a.Position;
         var sizeA = a.GetSize();
         var posB = b.Position;
         var sizeB = b.GetSize();
+        return CheckHit(posA,sizeA,posB,sizeB);
+    }
+    //특정 좌표와 오브젝트 충돌 체크
+    public static bool CheckHit(MapObject a, Vector2 vec)
+    {
+        var posA = a.Position;
+        var sizeA = a.GetSize();
+        var posB = vec;
+        var sizeB = new Vector2(1,1);
+        return CheckHit(posA,sizeA,posB,sizeB);
+    }
+    public static bool CheckHitCenter(MapObject a, MapObject center)
+    {
+        var posA = a.Position;
+        var sizeA = a.GetSize();
+        var posB = center.Position-new Vector2(center.GetSize().X/2,center.GetSize().Y/2);
+        var sizeB = center.GetSize();
+        return CheckHit(posA,sizeA,posB,sizeB);
+    }
+    public static bool CheckHit(Vector2 posA, Vector2 sizeA, Vector2 posB, Vector2 sizeB)
+    {
         return
         posA.X < posB.X + sizeB.X &&
         posA.X + sizeA.X > posB.X &&

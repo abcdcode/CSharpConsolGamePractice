@@ -3,8 +3,8 @@ public class Player : MapObject, IInputable
     public Player()
     {
         coolTimer = new CoolTimer();
-        coolTimer.SetCool(shootCool,100,100,false,null);
-        coolTimer.SetCool(moveCool,50,50,false,null);
+        coolTimer.SetCool(shootCool,1000/GameState.Instance.PStat.ShotSpeed,1000,false,null);
+        coolTimer.SetCool(moveCool,1000/GameState.Instance.PStat.Speed,1000,false,null);
     }
     public override string[] RenderShape()
     {
@@ -56,7 +56,7 @@ public class Player : MapObject, IInputable
     {
         if(!coolTimer.IsCoolComp(shootCool)) return;
         GameState.Instance.ShootBullet(this.Position+new Vector2(1,0),Direction.Right,100,Faction.Player);
-        coolTimer.RefreshCool(shootCool);
+        coolTimer.RefreshCool(shootCool,1000/GameState.Instance.PStat.ShotSpeed);
     }
     public void MoveAction(ConsoleKey key)
     {
@@ -93,7 +93,7 @@ public class Player : MapObject, IInputable
         {
             Teleport(new Vector2(Position.X,GameState.MapSizeY-1));
         }
-        coolTimer.RefreshCool(moveCool);
+        coolTimer.RefreshCool(moveCool,1000/GameState.Instance.PStat.Speed);
     }
     public CoolTimer coolTimer;
     public const string shootCool = "shootCool";

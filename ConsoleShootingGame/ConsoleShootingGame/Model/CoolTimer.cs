@@ -35,11 +35,16 @@ public class CoolTimer
     /// 지정 쿨타임 0으로 초기화
     /// </summary>
     /// <param name="id"></param>
-    public void RefreshCool(string id)
+    /// <param name="newCool">해당 쿨타임 정보 새로운 쿨타임 지정</param>
+    public void RefreshCool(string id, int newCool = -1)
     {
         if(coolDic.ContainsKey(id))
         {
             coolDic[id].cur = 0;
+            if(newCool > 0)
+            {
+                coolDic[id].cool = newCool;
+            }
         }
     }
     /// <summary>

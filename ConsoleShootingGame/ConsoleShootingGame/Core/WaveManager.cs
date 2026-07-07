@@ -120,7 +120,7 @@ public static class WavePreset
         List<WaveData> data = new()
         {
             new(1000,[
-                new(new(100,2),new Shielder(),new JustMove(6))
+                new(new(100,2),new Shielder(),new JustMove(6),new SpeedUp())
             ]),
             new(1500,[
                 new(new(100,3),new Jaco(),new MoveAndAttack(6,1))
@@ -135,7 +135,7 @@ public static class WavePreset
             ]),
 
             new(2000,[
-                new(new(100,8),new Shielder(),new JustMove(6))
+                new(new(100,8),new Shielder(),new JustMove(6), new ShotSpeedUp())
             ]),
             new(2500,[
                 new(new(100,9),new Jaco(),new MoveAndAttack(6,1))

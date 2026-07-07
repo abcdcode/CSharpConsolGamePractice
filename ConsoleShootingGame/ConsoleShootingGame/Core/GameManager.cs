@@ -78,6 +78,7 @@ public class GameManager
     }
     private void DrawScreen()
     {
+        //화면 크기 이전 프레임과 다르면 지우개 찐빠나니까 한번 싹 밀고 다시 그리기
         if(lastScreenX != Console.WindowWidth || lastScreenY != Console.WindowHeight)
             {
                 Console.Clear();

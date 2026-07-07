@@ -12,6 +12,7 @@ public class Bullet : MapObject
     public override void Update()
     {
         base.Update();
+        prevPos = Position;
         posProgress += GameManager.FrameTime;
         if(posProgress >= bulletSpeed)
         {
@@ -61,4 +62,5 @@ public class Bullet : MapObject
     public int bulletSpeed = 100;
     public Direction direction;
     public Faction faction;
+    public Vector2 prevPos;
 }

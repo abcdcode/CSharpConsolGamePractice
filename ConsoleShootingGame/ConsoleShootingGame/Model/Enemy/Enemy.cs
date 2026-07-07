@@ -25,7 +25,8 @@ public abstract class Enemy : MapObject
         var list = GameState.Instance.GetBulletList().FindAll(x => x.faction == Faction.Player);
         foreach(var b in list)
         {
-            var isHit = GameUtil.CheckHit(this,b);
+            //탄환 1프레임 이전 위치도 충돌 체크
+            var isHit = GameUtil.CheckHit(this,b) || GameUtil.CheckHit(this,b.prevPos);
             if(isHit)
             {
                 TakeDamage(GameState.Instance.PStat.Atk);
