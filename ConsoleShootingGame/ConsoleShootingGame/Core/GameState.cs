@@ -6,6 +6,7 @@ public class GameState : IInputable
         player = new Player();
         bulletPool = new List<Bullet>();
         enemyPool = new List<Enemy>();
+        itemPool = new List<Item>();
         Wave = new WaveManager();
         Instance = this;
     }
@@ -48,6 +49,14 @@ public class GameState : IInputable
     {
         enemyPool.Remove(enemy);
     }
+    public void AddItem(Item item)
+    {
+        itemPool.Add(item);
+    }
+    public void DeleteItem(Item item)
+    {
+        itemPool.Remove(item);
+    }
     public void CheckInput(List<KeyAction> keyInputs)
     {
         player.CheckInput(keyInputs);
@@ -79,10 +88,15 @@ public class GameState : IInputable
     {
         return enemyPool.ToList();
     }
+    public List<Item> GetItemList()
+    {
+        return itemPool.ToList();
+    }
     public int Score{get;private set;}
     public Player player;
     private List<Bullet> bulletPool;
     private List<Enemy> enemyPool;
+    private List<Item> itemPool;
     public WaveManager Wave{get;private set;}
     public const int MapSizeX = 90;
     public const int MapSizeY = 15;
