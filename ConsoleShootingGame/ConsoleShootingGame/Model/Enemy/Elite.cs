@@ -1,3 +1,6 @@
+/// <summary>
+/// 정예몹(강하다)
+/// </summary>
 public class Elite : Enemy
 {
     public override int MaxHP => 75;

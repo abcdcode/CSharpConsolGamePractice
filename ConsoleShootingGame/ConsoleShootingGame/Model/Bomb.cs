@@ -1,3 +1,6 @@
+/// <summary>
+/// 폭탄 클래스
+/// </summary>
 public class Bomb : MapObject
 {
     public Bomb(Vector2 pos)
@@ -11,6 +14,10 @@ public class Bomb : MapObject
     {
         return ["◆"];
     }
+    /// <summary>
+    /// 폭탄 작동 메소드
+    /// </summary>
+    /// <param name="pos">시작 위치</param>
     public static void StartBomb(Vector2 pos)
     {
         BombVisited = new bool[GameState.MapSizeY,GameState.MapSizeX];

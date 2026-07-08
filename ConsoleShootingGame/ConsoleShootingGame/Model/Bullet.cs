@@ -1,3 +1,6 @@
+/// <summary>
+/// 탄환 클래스
+/// </summary>
 public class Bullet : MapObject
 {
     
@@ -21,6 +24,7 @@ public class Bullet : MapObject
         }
         CheckOut();
     }
+    //방향값에 따라 움직임
     public void MoveByDir()
     {
         var mResult = new Vector2();

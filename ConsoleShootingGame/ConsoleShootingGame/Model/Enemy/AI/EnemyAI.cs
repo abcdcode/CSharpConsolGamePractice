@@ -1,3 +1,6 @@
+/// <summary>
+/// 적 AI 클래스
+/// </summary>
 public abstract class EnemyAI
 {
     public virtual void Init(Enemy o)

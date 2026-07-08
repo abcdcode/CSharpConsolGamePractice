@@ -1,3 +1,6 @@
+/// <summary>
+/// 스테이지 관리자
+/// </summary>
 public class WaveManager
 {
     public static WaveManager Instance{get;private set;}
@@ -22,6 +25,7 @@ public class WaveManager
             return;
         }
         curTime += GameManager.FrameTime;
+        //스테이지 정보에 따라 적 소환
         var list = waveDic[curStage];
         foreach(var w in list.ToList())
         {
@@ -36,6 +40,7 @@ public class WaveManager
                 list.Remove(w);
             }
         }
+        //현재 웨이브에 더이상 소환 예정인 적이 없고, 맵 상에도 남은 적이 없다면 다음 스테이지로 이동
         if(list.Count == 0 && GameState.Instance.GetEnemyList().Count == 0)
         {
             curStage += 1;
@@ -93,6 +98,7 @@ public class SummonData
 /// </summary>
 public static class WavePreset
 {
+    //스테이지 1
     public static List<WaveData> Stage1()
     {
         List<WaveData> data = new()
@@ -131,6 +137,7 @@ public static class WavePreset
         };
         return data;
     }
+    //스테이지 2
     public static List<WaveData> Stage2()
     {
         List<WaveData> data = new()
@@ -167,6 +174,7 @@ public static class WavePreset
         };
         return data;
     } 
+    //스테이지 3
     public static List<WaveData> Stage3()
     {
         List<WaveData> data = new()
@@ -180,6 +188,7 @@ public static class WavePreset
         };
         return data;
     }
+    //스테이지 4
     public static List<WaveData> Stage4()
     {
         List<WaveData> data = new()
@@ -188,7 +197,7 @@ public static class WavePreset
         };
         for(int i = 0 ; i < 100; i++)
         {
-            data.Add(new(1000+i*150,[
+            data.Add(new(1000+i*120,[
                 new(new(100,GameUtil.RandomRange(0,15)),new KamiKaze(),new JustMove(60))
             ]));
         }

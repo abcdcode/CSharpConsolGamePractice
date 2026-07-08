@@ -1,3 +1,6 @@
+/// <summary>
+/// 이동속도 업 아이템
+/// </summary>
 public class SpeedUp : Item
 {
     public override void Earn()

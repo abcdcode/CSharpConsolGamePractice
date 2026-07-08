@@ -1,3 +1,6 @@
+/// <summary>
+/// 공격속도 업 아이템
+/// </summary>
 public class ShotSpeedUp : Item
 {
     public override void Earn()

@@ -1,3 +1,6 @@
+/// <summary>
+/// 플레이어 앱 오브젝트
+/// </summary>
 public class Player : MapObject, IInputable
 {
     public Player()

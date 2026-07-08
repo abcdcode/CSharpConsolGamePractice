@@ -1,3 +1,6 @@
+/// <summary>
+/// 적 기체 클래스
+/// </summary>
 public abstract class Enemy : MapObject
 {
     public virtual void Init(EnemyAI ai, Item d)
@@ -20,6 +23,9 @@ public abstract class Enemy : MapObject
             enemyAI.Update();
         }
     }
+    /// <summary>
+    /// 플레이어 공격에 이 기체가 적중했는지 판정 메소드
+    /// </summary>
     public virtual void BulletCheck()
     {
         var list = GameState.Instance.GetBulletList().FindAll(x => x.faction == Faction.Player);

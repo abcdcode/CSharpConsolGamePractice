@@ -1,3 +1,6 @@
+/// <summary>
+/// 잡몹
+/// </summary>
 public class Jaco : Enemy
 {
     public override int Score => 1;

@@ -1,8 +1,11 @@
+/// <summary>
+/// 적정 화면 크기가 아닌데 게임 시작하려 할때 한번 더 확인 돌리는 씬
+/// </summary>
 public class IsSureScene : Scene
 {
     public override void CheckInput(List<KeyAction> keyInputs)
     {
-        if(coolTimer.IsCoolComp("Wait"))
+        if(coolTimer.IsCoolComp("Wait")) // 입력 딜레이. 두번 인식되서 바로 게임 시작되는거 방지
         {
             keyInputs.Add(new([ConsoleKey.D1,ConsoleKey.NumPad1],StartGame));
             keyInputs.Add(new([ConsoleKey.D9,ConsoleKey.NumPad9],ReturnToTitle));

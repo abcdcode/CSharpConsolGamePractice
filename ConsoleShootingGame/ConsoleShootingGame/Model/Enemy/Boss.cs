@@ -1,3 +1,6 @@
+/// <summary>
+/// 보스몹
+/// </summary>
 public class Boss : Enemy
 {
     public override int MaxHP => 200;

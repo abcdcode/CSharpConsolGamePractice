@@ -1,3 +1,6 @@
+/// <summary>
+/// 타이틀 화면 씬
+/// </summary>
 public class TitleScene : Scene
 {
     public TitleScene()
@@ -35,11 +38,12 @@ public class TitleScene : Scene
         base.OnChangeScene(prevScene);
         GameManager.Instance.IsPlaying = false;
     }
+    //게임 시작
     public void StartGame()
     {
         if(Console.WindowWidth < ScreenConfigScene.RecommandX || Console.WindowHeight < ScreenConfigScene.RecommandY)
         {
-            GameManager.Instance.ChangeScene(SceneName.ScreenSmall);
+            GameManager.Instance.ChangeScene(SceneName.ScreenSmall); // 화면 크기 안맞으면 확인 씬 띄우기
         }else
         {
             GameManager.Instance.ChangeScene(SceneName.MainGame);

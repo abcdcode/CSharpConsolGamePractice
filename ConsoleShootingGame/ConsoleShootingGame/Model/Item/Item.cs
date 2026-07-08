@@ -1,3 +1,6 @@
+/// <summary>
+/// 드랍 아이템 클래스
+/// </summary>
 public abstract class Item : MapObject
 {
     public Item()

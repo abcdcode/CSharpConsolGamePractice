@@ -27,6 +27,7 @@ public class MainGameScene : Scene
         }
         return buffer;
     }
+    //GameState에서 오브젝트들 가져와서 맵에 그리기
     public void DrawObjects()
     {
         var bList = GameState.Instance.GetBulletList();
@@ -55,6 +56,7 @@ public class MainGameScene : Scene
     public override void Update()
     {
     }
+    //씬 전환 시 GameState 초기화
     public override void OnChangeScene(Scene prevScene)
     {
         base.OnChangeScene(prevScene);
@@ -64,6 +66,7 @@ public class MainGameScene : Scene
     public override void CheckInput(List<KeyAction> keyInputs)
     {
     }
+    //게임오버 아스키 아트
     public string[] GameOver() 
     {
         return [

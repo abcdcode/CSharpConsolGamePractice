@@ -1,5 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 
+/// <summary>
+/// 2차원 좌표 구조체(유용하다)
+/// </summary>
 public struct Vector2
 {
     public Vector2()

@@ -1,3 +1,6 @@
+/// <summary>
+/// 몸빵몹
+/// </summary>
 public class Shielder : Enemy
 {
     public override int Score => 5;

@@ -1,3 +1,6 @@
+/// <summary>
+/// 공격력 업 아이템
+/// </summary>
 public class PowerUp : Item
 {
     public override void Earn()

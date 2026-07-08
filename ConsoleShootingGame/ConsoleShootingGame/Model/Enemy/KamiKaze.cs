@@ -1,3 +1,6 @@
+/// <summary>
+/// 자폭 기체
+/// </summary>
 public class KamiKaze : Enemy
 {
     public override int Score => 1;
