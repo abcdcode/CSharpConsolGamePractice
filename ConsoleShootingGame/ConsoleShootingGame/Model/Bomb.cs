@@ -34,7 +34,7 @@ public class Bomb : MapObject
     {
         base.Update();
         cool.Update();
-        var blist = GameState.Instance.GetBulletList();
+        var blist = GameState.Instance.GetBulletList().FindAll(x => x.faction == Faction.Enemy);
         foreach(var b in blist)
         {
             if(GameUtil.CheckHit(this,b))

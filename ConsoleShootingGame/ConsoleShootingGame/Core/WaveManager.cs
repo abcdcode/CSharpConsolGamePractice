@@ -17,7 +17,7 @@ public class WaveManager
         waveDic[4] = WavePreset.Stage4();
         waveDic[5] = WavePreset.Stage5();
         curTime = 0;
-        curStage = 1;
+        curStage = 5;
     }
     public void Update()
     {
@@ -210,7 +210,7 @@ public static class WavePreset
     {
         List<WaveData> data = new()
         {
-            new(1000,[new(new(100,2),new Boss(),new BossAI())])
+            new(1000,[new(new(95,2),new Boss(),new BossAI())])
         };
         return data;
     }
