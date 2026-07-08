@@ -46,6 +46,10 @@ public class WaveManager
         {
             curStage += 1;
             curTime = 0;
+            if(curStage > LastStage)
+            {
+                GameManager.Instance.ChangeScene(SceneName.Record);
+            }
         }
     }
     public int curTime;

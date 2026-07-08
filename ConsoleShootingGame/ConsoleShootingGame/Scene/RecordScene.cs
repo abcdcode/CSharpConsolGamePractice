@@ -74,6 +74,7 @@ public class RecordScene : Scene
     public override void OnChangeScene(Scene prevScene)
     {
         base.OnChangeScene(prevScene);
+        GameManager.Instance.IsPlaying = false;
         coolTimer = new CoolTimer();
         recordBuffer = new char[3];
         bufferPointer = 0;
