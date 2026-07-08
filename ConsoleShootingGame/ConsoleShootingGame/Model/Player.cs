@@ -5,6 +5,7 @@ public class Player : MapObject, IInputable
         coolTimer = new CoolTimer();
         coolTimer.SetCool(shootCool,1000/GameState.Instance.PStat.ShotSpeed,1000,false,null);
         coolTimer.SetCool(moveCool,1000/GameState.Instance.PStat.Speed,1000,false,null);
+        coolTimer.SetCool(bombCool,2000,0,false,null);
     }
     public override string[] RenderShape()
     {
@@ -55,8 +56,19 @@ public class Player : MapObject, IInputable
           new (ConsoleKey.RightArrow,() => MoveAction(ConsoleKey.RightArrow)),
           new (ConsoleKey.UpArrow,() => MoveAction(ConsoleKey.UpArrow)),
           new (ConsoleKey.DownArrow,() => MoveAction(ConsoleKey.DownArrow)),
-          new (ConsoleKey.Z,() => Shoot())
+          new (ConsoleKey.Z,() => Shoot()),
+          new (ConsoleKey.X,UseBomb)
         ]);
+    }
+    public void UseBomb()
+    {
+        if(GameState.Instance.PStat.BombCount > 0 && GameState.Instance.GetObjectList().Find(x => x is Bomb) == null)
+        {
+            Bomb.StartBomb(this.Position);
+            GameState.Instance.PStat.UseBomb();
+            coolTimer.RefreshCool(bombCool);
+        }
+        
     }
     public void Shoot()
     {
@@ -102,6 +114,7 @@ public class Player : MapObject, IInputable
         coolTimer.RefreshCool(moveCool,1000/GameState.Instance.PStat.Speed);
     }
     public CoolTimer coolTimer;
+    public const string bombCool = "bombCool";
     public const string shootCool = "shootCool";
     public const string moveCool = "moveCool";
 }

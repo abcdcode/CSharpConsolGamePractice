@@ -38,4 +38,8 @@ public class PlayerStat
     {
         ShotSpeed = Math.Max(1,ShotSpeed+value);
     }
+    public void UseBomb()
+    {
+        BombCount -= 1;
+    }
 }

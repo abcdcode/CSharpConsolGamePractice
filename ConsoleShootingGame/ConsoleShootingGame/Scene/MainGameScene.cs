@@ -18,6 +18,7 @@ public class MainGameScene : Scene
         DrawString(0,drawY,$"Atk:[{new string('□',GameState.Instance.PStat.Atk)}]");
         DrawString(0,drawY+1,$"Atk Speed:[{new string('□',GameState.Instance.PStat.ShotSpeed/2)}]");
         DrawString(0,drawY+2,$"Move Speed:[{new string('□',GameState.Instance.PStat.Speed/5)}]");
+        DrawString(0,drawY+3,$"Bomb:[{new string('□',GameState.Instance.PStat.BombCount)}]");
 
         //플레이어 사망 시 게임오버
         if(!GameManager.Instance.IsPlaying)
@@ -42,6 +43,11 @@ public class MainGameScene : Scene
         foreach(var i in iList)
         {
             DrawObject(i);
+        }
+        var oList = GameState.Instance.GetObjectList();
+        foreach(var o in oList)
+        {
+            DrawObject(o);
         }
         var p = GameState.Instance.player;
         DrawObject(p);
