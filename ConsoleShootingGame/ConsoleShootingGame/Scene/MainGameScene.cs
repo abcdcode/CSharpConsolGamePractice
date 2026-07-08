@@ -36,7 +36,7 @@ public class MainGameScene : Scene
         //플레이어 사망 시 게임오버
         if(!GameManager.Instance.IsPlaying)
         {
-            DrawSString(0,5,GameOver());
+            DrawSString(0,4+mapPosY,GameOver());
         }
         return buffer;
     }

@@ -49,7 +49,7 @@ public class Player : MapObject, IInputable
     {
         GameManager.Instance.IsPlaying = false;
         await Task.Delay(3000);
-        GameManager.Instance.ChangeScene(SceneName.Title);
+        GameManager.Instance.ChangeScene(SceneName.Record);
     }
     public void CheckInput(List<KeyAction> actions)
     {

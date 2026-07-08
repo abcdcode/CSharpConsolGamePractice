@@ -22,6 +22,7 @@ public class GameManager
         sceneDic[SceneName.MainGame] = new MainGameScene();
         sceneDic[SceneName.Config] = new ScreenConfigScene();
         sceneDic[SceneName.ScreenSmall] = new IsSureScene();
+        sceneDic[SceneName.Record] = new RecordScene();
         
     }
     public void Start()
@@ -133,5 +134,6 @@ public enum SceneName
     Title,
     MainGame,
     Config,
-    ScreenSmall
+    ScreenSmall,
+    Record
 }
