@@ -15,6 +15,7 @@ public class WaveManager
         waveDic[2] = WavePreset.Stage2();
         waveDic[3] = WavePreset.Stage3();
         waveDic[4] = WavePreset.Stage4();
+        waveDic[5] = WavePreset.Stage5();
         curTime = 0;
         curStage = 1;
     }
@@ -50,6 +51,8 @@ public class WaveManager
     public int curTime;
     public Dictionary<int,List<WaveData>> waveDic;
     public int curStage;
+    //마지막 스테이지 정의
+    public const int LastStage = 5;
 }
 public class WaveData
 {
@@ -202,5 +205,13 @@ public static class WavePreset
             ]));
         }
         return data;
-    } 
+    }
+    public static List<WaveData> Stage5()
+    {
+        List<WaveData> data = new()
+        {
+            new(1000,[new(new(100,2),new Boss(),new BossAI())])
+        };
+        return data;
+    }
 }
