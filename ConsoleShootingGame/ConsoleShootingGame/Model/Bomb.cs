@@ -10,6 +10,11 @@ public class Bomb : MapObject
         Position = pos;
         BombVisited[this.Position.Y,this.Position.X] = true;
     }
+    //좀 잘 맞도록 크기 조정
+    public override Vector2 GetSize()
+    {
+        return new Vector2(3,3);
+    }
     public override string[] RenderShape()
     {
         return ["◆"];
@@ -43,6 +48,7 @@ public class Bomb : MapObject
             if(!alreadyDamaged.Contains(e) && GameUtil.CheckHit(this,e))
             {
                 e.TakeDamage(BombDmg);
+                alreadyDamaged.Add(e);
             }
         }
     }

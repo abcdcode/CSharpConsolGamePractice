@@ -16,7 +16,7 @@ public class WaveManager
         waveDic[3] = WavePreset.Stage3();
         waveDic[4] = WavePreset.Stage4();
         curTime = 0;
-        curStage = 4;
+        curStage = 1;
     }
     public void Update()
     {

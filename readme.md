@@ -1,6 +1,9 @@
 # 슈팅게임
 사이드뷰 슈팅 게임
 C# 콘솔 게임 프로젝트. 비동기 메소드를 활용한 Update로 실시간 화면 갱신 및 2D 좌표계 구현을 통해 유니티 2D 환경을 모방한 학습용 게임
+
+ConsoleShootingGame\bin\Debug\net10.0\ConsoleShootingGame.exe 를 실행해서 플레이
+권장 화면 사이즈 있음. 안맞추면 UI 망가짐
 # 기획 의도
 유니티 게임 개발에 들어가면 빈번하게 다룰 Update를 통한 실시간 게임 구현을 미리 연습해보기 위해서
 
