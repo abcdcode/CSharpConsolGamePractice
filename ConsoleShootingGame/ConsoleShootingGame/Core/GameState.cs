@@ -1,3 +1,5 @@
+using System.Dynamic;
+
 /// <summary>
 /// 인게임 상태 전체 총괄 클래스
 /// </summary>
@@ -13,6 +15,7 @@ public class GameState : IInputable
     {
         Score = 0;
         PStat = new PlayerStat();
+        CurBoss = null;
         player = new Player();
         player.Position = new Vector2(0,MapSizeY/2);
         bulletPool = new List<Bullet>();
@@ -41,6 +44,14 @@ public class GameState : IInputable
         bulletPool.Add(b);
         return b;
     }
+    public void RegisterBoss(Enemy enemy)
+    {
+        CurBoss = enemy;
+    }
+    public void UnRegisterBoss()
+    {
+        CurBoss = null;
+    }
     public void DeleteBullet(Bullet b)
     {
         bulletPool.Remove(b);
@@ -48,10 +59,12 @@ public class GameState : IInputable
     public void AddEnemy(Enemy enemy)
     {
         enemyPool.Add(enemy);
+        if(enemy.IsBoss) RegisterBoss(enemy);
     }
     public void DeleteEnemy(Enemy enemy)
     {
         enemyPool.Remove(enemy);
+        if(enemy.IsBoss) UnRegisterBoss();
     }
     public void AddItem(Item item)
     {
@@ -119,6 +132,7 @@ public class GameState : IInputable
     public int Score{get;private set;}
     public Player player;
     public PlayerStat PStat{get;private set;}
+    public Enemy CurBoss{get;private set;}
     private List<Bullet> bulletPool;
     private List<Enemy> enemyPool;
     private List<Item> itemPool;

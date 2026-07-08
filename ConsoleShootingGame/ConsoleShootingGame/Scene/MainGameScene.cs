@@ -10,9 +10,22 @@ public class MainGameScene : Scene
         var score = $"Score : {GameState.Instance.Score}";
         var space = GameState.MapSizeX-stage.Length-score.Length;
         DrawString(0,0,$"{stage}{new string(' ',space)}{score}"); //현재 스테이지와 스코어 값을 최상단에 배치
-        DrawMap(0,1); // 맵 그리기
+        int mapPosY = 1;
+        if(GameState.Instance.CurBoss != null)
+        {
+            var boss = GameState.Instance.CurBoss;
+            var bossName = boss.Name;
+            var bossHp = boss.HP;
+            var bossMaxHp = boss.MaxHP;
+            var hpBarSize = (int)((float)bossHp/bossMaxHp * GameState.MapSizeX);
+            var bNameSpace = GameState.MapSizeX-bossName.Length;
+            DrawString(0,1,$"{new string(' ',bNameSpace/2)}{bossName}");
+            DrawString(0,2,$"{new string('■',hpBarSize)}");
+            mapPosY += 2;
+        }
+        DrawMap(0,mapPosY); // 맵 그리기
         DrawObjects(); // 맵 위 오브젝트들 그리기
-        int drawY = GameState.MapSizeY+1;
+        int drawY = GameState.MapSizeY+mapPosY;
 
         //플레이어 스탯들 그리기
         DrawString(0,drawY,$"Atk:[{new string('□',GameState.Instance.PStat.Atk)}]");

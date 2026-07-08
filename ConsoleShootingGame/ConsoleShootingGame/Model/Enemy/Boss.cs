@@ -3,6 +3,8 @@
 /// </summary>
 public class Boss : Enemy
 {
+    public override bool IsBoss => true;
+    public override string Name => "B.F Ship";
     public override int Score => 100;
     public override int MaxHP => 250;
     public override Vector2 GetSize()

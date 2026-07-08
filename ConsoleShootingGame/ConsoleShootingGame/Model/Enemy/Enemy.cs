@@ -10,6 +10,8 @@ public abstract class Enemy : MapObject
         dropItem = d;
         ai.Init(this);
     }
+    public virtual bool IsBoss => false;
+    public virtual string Name => "Enemy";
     public virtual int Score => 1;
     public virtual int HP{get;set;}
     public abstract int MaxHP{get;}

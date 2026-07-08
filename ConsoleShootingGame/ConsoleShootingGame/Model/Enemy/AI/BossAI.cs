@@ -13,7 +13,8 @@ public class BossAI : EnemyAI
     {
         coolTimer = new CoolTimer();
         coolTimer.SetCool(StartMove,333,0,false,Action_StartMove);
-        coolTimer.SetCool(UpDownMove,300,0,false,Action_UpDownMove);
+        
+        
         upDown = Direction.Down;
     }
     public override void Update()
@@ -21,11 +22,51 @@ public class BossAI : EnemyAI
         base.Update();
         coolTimer.Update();
     }
+    //일반 공격
+    public void Action_NormalAttack()
+    {
+        int rand = GameUtil.RandomRange(0,5);
+        var bojung = owner.GetSize().Y/2;
+        if(rand == 0)
+        {
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left,80,Faction.Enemy);
+            coolTimer.RefreshCool(NormalAttack,200);
+        }
+        if(rand == 1)
+        {
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung-2),Direction.Left,60,Faction.Enemy);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung+2),Direction.Left,60,Faction.Enemy);
+            coolTimer.RefreshCool(NormalAttack,300);
+        }
+        if(rand == 2)
+        {
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung-1),Direction.Left | Direction.Up,60,Faction.Enemy,10);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung+1),Direction.Left | Direction.Down,60,Faction.Enemy,10);
+            coolTimer.RefreshCool(NormalAttack,300);
+        }
+        if(rand == 3)
+        {
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left,60,Faction.Enemy);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left | Direction.Up,35,Faction.Enemy,10);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left | Direction.Down,35,Faction.Enemy,10);
+            coolTimer.RefreshCool(NormalAttack,400);
+        }
+        if(rand == 4)
+        {
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left,50,Faction.Enemy);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left | Direction.Up,15,Faction.Enemy,20);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left | Direction.Down,15,Faction.Enemy,20);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left | Direction.Up,30,Faction.Enemy,15);
+            GameState.Instance.ShootBullet(owner.Position+new Vector2(0,bojung),Direction.Left | Direction.Down,30,Faction.Enemy,15);
+            coolTimer.RefreshCool(NormalAttack,500);
+        }
+        
+    }
     //상하 이동. 개막 패턴 및 레이저 패턴 중엔 중지
     public void Action_UpDownMove()
     {
         if(coolTimer.GetCool(StartMove) != null) 
-        {
+        { 
             goto Refresh;
         }
         var vec = GameUtil.MovePosByDirection(upDown);
@@ -49,6 +90,8 @@ public class BossAI : EnemyAI
         if(owner.Position.X == 75)
         {
             coolTimer.DeleteCool(StartMove);
+            coolTimer.SetCool(UpDownMove,300,0,false,Action_UpDownMove);
+            coolTimer.SetCool(NormalAttack,150,0,false,Action_NormalAttack);
         } else
         {
             coolTimer.RefreshCool(StartMove);
