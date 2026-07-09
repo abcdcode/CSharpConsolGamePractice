@@ -85,11 +85,11 @@ public class GameManager
             {
                 Console.Clear();
             }
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, 0); //Write용 커서를 화면 좌상단으로 이동
             lastScreenX = Console.WindowWidth;
             lastScreenY = Console.WindowHeight;
             
-            char[,] b = curScene.Render();
+            char[,] b = curScene.Render(); // 현재 씬에서 렌더링 데이터 받아오기
             StringBuilder sb = new StringBuilder();
             
             for(int y = 0 ; y < b.GetLength(0); y++)
@@ -98,14 +98,16 @@ public class GameManager
                 for(int x = 0 ; x < b.GetLength(1) - pointer; x++)
                 {
                     sb.Append(b[y,x]);
+                    
                     if(GetWidth(b[y,x]) == 2)
                 {
                     pointer += 1;
                 }
+                
                 }
                 sb.AppendLine();
             }
-            Console.Write(sb.ToString());
+            Console.Write(sb.ToString()); //렌더링 데이터를 한줄한줄 출력
             Console.SetCursorPosition(0, 0);
     }
     //한글이면 버퍼 2칸 차지해야함. 챗지피티 작품
