@@ -23,6 +23,7 @@ public class GameManager
         sceneDic[SceneName.Config] = new ScreenConfigScene();
         sceneDic[SceneName.ScreenSmall] = new IsSureScene();
         sceneDic[SceneName.Record] = new RecordScene();
+        sceneDic[SceneName.JustBoard] = new JustRecordBoardScene();
         
     }
     public void Start()
@@ -135,5 +136,6 @@ public enum SceneName
     MainGame,
     Config,
     ScreenSmall,
-    Record
+    Record,
+    JustBoard
 }

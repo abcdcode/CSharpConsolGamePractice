@@ -47,6 +47,9 @@ public class RecordScene : Scene
     public override char[,] Render()
     {
         BufferClear();
+        var rString = RecordInfo.CreateRecordBoard(records);
+        DrawSString(0,0,rString);
+        /*
         DrawString(0,0,$"Rank{new string(' ',4)}Score{new string(' ',4)}Name");
         int index = 1;
         foreach(var r in records)
@@ -61,6 +64,7 @@ public class RecordScene : Scene
             index += 1;
             if(index == 11) break;
         }
+        */
         var c = records.Count > 10 ? 10 : records.Count;
         var cc = $"{GameState.Instance.Score}";
         DrawString(0,c+1,$"{new string(' ',8)}{new string('0',5-cc.Length)}{cc}{new string(' ',5)}{new string(recordBuffer)}");
@@ -106,7 +110,7 @@ public class RecordScene : Scene
         if(bufferPointer == 0) return;
         bufferPointer -= 1;
         recordBuffer[bufferPointer] = ' ';
-        coolTimer.SetCool("Press",200,0,true,null);
+        coolTimer.SetCool("Press",InputDelay,0,true,null);
     }
     public void PressOk()
     {
@@ -115,7 +119,7 @@ public class RecordScene : Scene
         records.Add(info);
         SaveRecord();
         GameManager.Instance.ChangeScene(SceneName.Title);
-        coolTimer.SetCool("Press",200,0,true,null);
+        coolTimer.SetCool("Press",InputDelay,0,true,null);
     }
     
     public void PressABC(char c)
@@ -123,12 +127,13 @@ public class RecordScene : Scene
         if(bufferPointer == 3) return;
         recordBuffer[bufferPointer] = c;
         bufferPointer += 1;
-        coolTimer.SetCool("Press",200,0,true,null);
+        coolTimer.SetCool("Press",InputDelay,0,true,null);
     }
     public CoolTimer coolTimer;
     public List<RecordInfo> records;
     public int bufferPointer;
     public char[] recordBuffer;
+    public const int InputDelay = 150;
 }
 public class RecordInfo
 {
@@ -142,6 +147,25 @@ public class RecordInfo
         var datas = s.Split('.');
         score = int.Parse(datas[0]);
         name = datas[1];
+    }
+    public static string[] CreateRecordBoard(List<RecordInfo> list)
+    {
+        List<string> buffer = new List<string>();
+        buffer.Add($"Rank{new string(' ',4)}Score{new string(' ',4)}Name");
+        int index = 1;
+        foreach(var r in list)
+        {
+            
+            string st = "TH";
+            if(index == 1) st = "ST";
+            if(index == 2) st = "ND";
+            if(index == 3) st = "RD";
+            string sc = $"{r.score}";
+            buffer.Add($"{index}{st}{new string(' ',5)}{new string('0',5-sc.Length)}{sc}{new string(' ',5)}{r.name}");
+            index += 1;
+            if(index == 11) break;
+        }
+        return buffer.ToArray();
     }
     public string ToString()
     {

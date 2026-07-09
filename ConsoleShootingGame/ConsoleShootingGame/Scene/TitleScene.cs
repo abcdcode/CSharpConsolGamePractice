@@ -13,7 +13,8 @@ public class TitleScene : Scene
         keyInputs.AddRange(
         [
             new([ConsoleKey.D1,ConsoleKey.NumPad1],StartGame),
-            new([ConsoleKey.D2,ConsoleKey.NumPad1],ConfigStart),
+            new([ConsoleKey.D2,ConsoleKey.NumPad2],ConfigStart),
+            new([ConsoleKey.D3,ConsoleKey.NumPad3],BoardStart),
             new([ConsoleKey.D0,ConsoleKey.NumPad0],QuitGame)
         ]);
     }
@@ -30,7 +31,8 @@ public class TitleScene : Scene
         DrawString(0,2,"=============================");
         DrawString(0,3,"1.Start Game");
         DrawString(0,4,"2.Screen Config");
-        DrawString(0,5,"0.Exit Game");
+        DrawString(0,5,"3.Ranking");
+        DrawString(0,6,"0.Exit Game");
         return buffer;
     }
     public override void OnChangeScene(Scene prevScene)
@@ -48,6 +50,10 @@ public class TitleScene : Scene
         {
             GameManager.Instance.ChangeScene(SceneName.MainGame);
         }
+    }
+    public void BoardStart()
+    {
+        GameManager.Instance.ChangeScene(SceneName.JustBoard);
     }
     public void ConfigStart()
     {
