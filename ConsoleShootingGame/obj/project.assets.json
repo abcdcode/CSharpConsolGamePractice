@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CSharpProjectFolder\\ConsoleGameFramework\\CSharpConsolGamePractice\\ConsoleShootingGame\\ConsoleShootingGame\\ConsoleShootingGame.csproj",
+      "projectUniqueName": "D:\\CSharpProjectFolder\\ConsoleGameFramework\\CSharpConsolGamePractice\\ConsoleShootingGame\\ConsoleShootingGame.csproj",
       "projectName": "ConsoleShootingGame",
-      "projectPath": "D:\\CSharpProjectFolder\\ConsoleGameFramework\\CSharpConsolGamePractice\\ConsoleShootingGame\\ConsoleShootingGame\\ConsoleShootingGame.csproj",
+      "projectPath": "D:\\CSharpProjectFolder\\ConsoleGameFramework\\CSharpConsolGamePractice\\ConsoleShootingGame\\ConsoleShootingGame.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\CSharpProjectFolder\\ConsoleGameFramework\\CSharpConsolGamePractice\\ConsoleShootingGame\\ConsoleShootingGame\\obj\\",
+      "outputPath": "D:\\CSharpProjectFolder\\ConsoleGameFramework\\CSharpConsolGamePractice\\ConsoleShootingGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
